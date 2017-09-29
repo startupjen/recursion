@@ -4,7 +4,19 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className
-) {
-  // your code here
-};
+
+let getElementsByClassName = (className) => {
+  let result = []
+  addElementsByClassName(className)
+  return result
+  
+  function addElementsByClassName(className, element = document.documentElement) {
+    if (element.className.includes(className)) { result.push(element) }
+
+    if ( element.childElementCount > 0 ) {
+      for (let i = 0; i < element.childElementCount; i++) {
+        addElementsByClassName(className, element.children[i])
+      }
+    }
+  }
+}

@@ -12,6 +12,7 @@ describe('getElementsByClassName', function() {
 
   it('should match the results of calling the built-in function', function() {
     $('body').addClass('targetClassName');
+    let count = 0
     htmlStrings.forEach(function(htmlString) {
       var $rootElement = $(htmlString);
       $('body').append($rootElement);
@@ -23,6 +24,7 @@ describe('getElementsByClassName', function() {
       expect(equality).to.equal(true);
 
       $rootElement.remove();
+      count++
     });
     $('body').removeClass('targetClassName');
   });
